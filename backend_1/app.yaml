@@ -1,0 +1,14 @@
+runtime: python37
+
+automatic_scaling:
+  min_instances: 1
+  max_instances: 15
+
+instance_class: F4_1G
+
+inbound_services:
+ - warmup
+
+resources:
+  cpu: 2
+  memory_gb: 4
