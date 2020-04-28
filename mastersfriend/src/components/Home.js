@@ -9,34 +9,42 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 // import ReactDom from 'react-dom';
 
 class HomePage extends Component {
-  state = {
-    users: null,
-    username: '',
-    loading: true,
-    first_name: '',
-    last_name: '',
-    email: '',
-    grade: '',
-    update: 0,
-    gre: '',
-    we: '',
-    toefl:'',
-    resume: '',
-    sop: '',
-    entry: '',
-    uid: '',
-    redirect: null,
-    lor1: '',
-    lor2: '',
-    lor3: '',
-    lor4: '',
-    progresssop: '',
-    progressresume: '',
-    url_resume: '',
-    url_sop: ''
-  };
 
-  
+  constructor(props)
+  {
+    super(props)
+    this.state = {
+      users: null,
+      username: '',
+      loading: true,
+      first_name: '',
+      last_name: '',
+      email: '',
+      grade: '',
+      update: 0,
+      gre: '',
+      we: '',
+      toefl:'',
+      resume: '',
+      sop: '',
+      entry: '',
+      uid: '',
+      redirect: null,
+      lor1: '',
+      lor2: '',
+      lor3: '',
+      lor4: '',
+      progresssop: '',
+      progressresume: '',
+      url_resume: '',
+      url_sop: '',
+      mit: '',
+      utd: '',
+      usc: '',
+      neu: '',
+      ncsu: ''
+    };
+  }
   componentDidMount() {
 
     const { loggedUser } = this.props;
@@ -192,12 +200,13 @@ class HomePage extends Component {
     console.log(this.state)
       db.doCreateFrom(this.state.username,this.state.email,this.state.first_name,this.state.last_name,this.state.grade,this.state.gre,this.state.we,this.state.toefl,this.state.uid,this.state.lor1,this.state.lor2,this.state.lor3,this.state.lor4)
           .then(() => {
-            this.props.history.push('/Predict')
+            // this.props.history.push('/Predict')
           })
           .catch(error => {
           });
 
           axios.post('https://masters-backend-1.wl.r.appspot.com/', {
+            // axios.post('https://820aedbf.ngrok.io/', {
             'email': (this.state.email).toString(),
             'grade': this.state.grade,
             'gre': this.state.gre,
@@ -210,7 +219,25 @@ class HomePage extends Component {
             'lor4': this.state.lor4
           })
           .then((response) => {
-            console.log(response);
+            console.log(response.data.mit.score);
+            this.setState({ 
+              mit: response.data.mit.score,
+              utd: response.data.utd.score,
+              ncsu: response.data.ncsu.score,
+              neu: response.data.neu.score,
+              usc: response.data.usc.score
+             });
+             this.props.history.push({pathname:'/Predict',
+             state : {
+               mit: this.state.mit,
+               first_name: this.state.first_name,
+               usc: this.state.usc,
+               ncsu: this.state.ncsu,
+               utd: this.state.utd,
+               neu: this.state.neu
+             }
+            }
+             )
           }, (error) => {
             console.log(error);
           });
