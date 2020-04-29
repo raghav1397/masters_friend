@@ -1,14 +1,12 @@
 // import React, { Component } from "react";
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import { Container } from "reactstrap";
 import "./App.css";
 
 // import { firebase } from "../firebase";
 import * as routes from "../constants/routes";
 
 //nav stuff
-import Navigation from "./Navigation";
 import LandingPage from "./Landing";
 import SignUpPage from "./SignUp";
 import SignInPage from "./SignIn";
@@ -22,9 +20,7 @@ import withAuthentication from "./withAuthentication";
 /*eslint-disable */
 const App = () => (
   <BrowserRouter>
-    <Container>
-      <Navigation />
-
+    <div className="wrapper">
       <Route exact path={routes.LANDING} component={LandingPage} />
       <Route exact path={routes.SIGN_UP} component={SignUpPage} />
       <Route exact path={routes.SIGN_IN} component={SignInPage} />
@@ -37,7 +33,7 @@ const App = () => (
       />
       <Route exact path={routes.HOME} component={HomePage} />
       <Route exact path={routes.ACCOUNT} component={AccountPage} />
-    </Container>
+    </div>
   </BrowserRouter>
 );
 

@@ -1,9 +1,16 @@
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+// import "./index.css";
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
+
+// styles
+import "./assets/css/bootstrap.min.css";
+import "./assets/css/now-ui-kit.css";
+import "./assets/css/now-ui-kit.min.css";
+import "./assets/css/now-ui-kit.css.map";
+import "./assets/demo/demo.css";
 
 ReactDOM.render(<App ></App>, document.getElementById("root"));
 

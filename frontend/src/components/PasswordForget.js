@@ -16,21 +16,20 @@ const PasswordForgetPage = () => (
 );
 
 const byPropKey = (propertyName, value) => () => ({
-  [propertyName]: value
+  [propertyName]: value,
 });
 
 //################### PasswordForget Form ###################
 const INITIAL_STATE = {
   email: "",
   error: null,
-  showingAlert: false
+  showingAlert: false,
 };
-
 
 class PasswordForgetForm1 extends Component {
   state = { ...INITIAL_STATE };
 
-  onSubmit = event => {
+  onSubmit = (event) => {
     const { email } = this.state;
 
     auth
@@ -38,7 +37,7 @@ class PasswordForgetForm1 extends Component {
       .then(() => {
         this.setState({ ...INITIAL_STATE });
       })
-      .catch(error => {
+      .catch((error) => {
         this.setState(byPropKey("error", error));
         this.timer(); //show alert message for some seconds
       });
@@ -48,12 +47,12 @@ class PasswordForgetForm1 extends Component {
 
   timer = () => {
     this.setState({
-      showingAlert: true
+      showingAlert: true,
     });
 
     setTimeout(() => {
       this.setState({
-        showingAlert: false
+        showingAlert: false,
       });
     }, 4000);
   };
@@ -80,7 +79,7 @@ class PasswordForgetForm1 extends Component {
               id="exampleEmail"
               placeholder="user@gmail.com"
               value={email}
-              onChange={event =>
+              onChange={(event) =>
                 this.setState(byPropKey("email", event.target.value))
               }
             />
@@ -100,12 +99,10 @@ class PasswordForgetForm1 extends Component {
 //################### PasswordForget Link ###################
 const PasswordForgetLink = () => (
   <p>
-    <Link to={routes.PASSWORD_FORGET}>Forgot Password?</Link>
+    Did you forgot password? <Link to={routes.PASSWORD_FORGET}>Reset it</Link>
   </p>
 );
 
 export default PasswordForgetPage;
 
 export { PasswordForgetForm1, PasswordForgetLink };
-
-

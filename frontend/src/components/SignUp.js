@@ -23,47 +23,47 @@ const INITIAL_STATE = {
   passwordOne: "",
   passwordTwo: "",
   error: null,
-  showingAlert: false
+  showingAlert: false,
 };
 
 //A Higher order function with prop name as key and the value to be assigned to
 const byPropKey = (propertyName, value) => () => ({
-  [propertyName]: value
+  [propertyName]: value,
 });
 
 class SignUpForm extends Component {
   //defining state
   state = {
-    ...INITIAL_STATE
+    ...INITIAL_STATE,
   };
 
-  onSubmit = event => {
+  onSubmit = (event) => {
     const { username, email, passwordOne } = this.state;
     const { history } = this.props;
-    console.log("raghav12345")
+    console.log("raghav12345");
     auth
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       //it the above functions resolves, reset the state to its initial state values, otherwise, set the error object
-      .then(authUser => {
-        console.log(authUser.uid)
+      .then((authUser) => {
+        console.log(authUser.uid);
         //creating a user in the database after the sign up through Firebase auth API
         db.doCreateUser(authUser.uid, username, email)
           .then(() => {
-            console.log(authUser.uid)
+            console.log(authUser.uid);
             this.setState({
-              ...INITIAL_STATE
+              ...INITIAL_STATE,
             });
             history.push(routes.HOME); //redirects to Home Page
           })
-          .catch(error => {
-            console.log(error)
+          .catch((error) => {
+            console.log(error);
             this.setState(byPropKey("error", error));
             this.timer(); //show alert message for some seconds
           });
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState(byPropKey("error", err));
-        console.log(err)
+        console.log(err);
         this.timer(); //show alert message for some seconds
       });
 
@@ -72,12 +72,12 @@ class SignUpForm extends Component {
 
   timer = () => {
     this.setState({
-      showingAlert: true
+      showingAlert: true,
     });
 
     setTimeout(() => {
       this.setState({
-        showingAlert: false
+        showingAlert: false,
       });
     }, 4000);
   };
@@ -89,7 +89,7 @@ class SignUpForm extends Component {
       passwordOne,
       passwordTwo,
       error,
-      showingAlert
+      showingAlert,
     } = this.state;
     //a boolen to perform validation
     const isInvalid =
@@ -114,7 +114,7 @@ class SignUpForm extends Component {
               id="userName"
               placeholder="John Doe"
               value={username}
-              onChange={e =>
+              onChange={(e) =>
                 this.setState(byPropKey("username", e.target.value))
               }
             />
@@ -127,7 +127,9 @@ class SignUpForm extends Component {
               id="exampleEmail"
               placeholder="user@gmail.com"
               value={email}
-              onChange={e => this.setState(byPropKey("email", e.target.value))}
+              onChange={(e) =>
+                this.setState(byPropKey("email", e.target.value))
+              }
             />
           </FormGroup>
           <FormGroup>
@@ -138,7 +140,7 @@ class SignUpForm extends Component {
               id="examplePassword1"
               placeholder="Password"
               value={passwordOne}
-              onChange={e =>
+              onChange={(e) =>
                 this.setState(byPropKey("passwordOne", e.target.value))
               }
             />
@@ -151,7 +153,7 @@ class SignUpForm extends Component {
               id="examplePassword2"
               placeholder="Confirm Password"
               value={passwordTwo}
-              onChange={e =>
+              onChange={(e) =>
                 this.setState(byPropKey("passwordTwo", e.target.value))
               }
             />
@@ -179,4 +181,3 @@ const SignUpLink = () => (
 //exports
 export default withRouter(SignUpPage); //using a HoC to get access to history
 export { SignUpForm, SignUpLink };
-
