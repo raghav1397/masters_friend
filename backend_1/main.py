@@ -1,3 +1,4 @@
+import copy
 import json
 import fitz
 import requests
@@ -5,10 +6,11 @@ import numpy as np
 import pickle as pkl
 from PIL import Image
 from flask_cors import CORS
+from operator import itemgetter
 from google.cloud import storage
+from multiprocessing.pool import Pool
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api, reqparse
-
 
 app = Flask(__name__)
 api = Api(app)
@@ -35,7 +37,6 @@ class MastersFriendB1(Resource):
             if r.ok:
                 success = True
                 txt = r.text
-        print(txt)
         return json.loads(txt)
 
     def post(self):
@@ -96,10 +97,25 @@ class MastersFriendB1(Resource):
             data["resume"] = resume.tolist()
             data["sop"] = sop
             universities = ["mit","neu","ncsu","utd","usc"]
-            rets = [self.send_requests(data,x,) for x in universities]
+
+            # Parallel requests
+            pool = Pool(len(universities))
+            async_result = [pool.apply_async(self.send_requests, (data, univ,)) for univ in universities]
+            pool.close()
+            pool.join()
+            return_val = sorted([ar.get() for ar in async_result], key=itemgetter('score'), reverse=True)
+            print(return_val)
             resp = {}
-            for i,u in enumerate(universities):
-                resp[u] = rets[i]
+            for d in return_val:
+                univ = d['univ']
+                nd = copy.deepcopy(data)
+                nd['score'] = d['score']
+                resp[univ] = nd
+
+            # rets = [self.send_requests(data,x,) for x in universities]
+            # resp = {}
+            # for i,u in enumerate(universities):
+                # resp[u] = rets[i]
             return resp
         except Exception as e:
             print(e)

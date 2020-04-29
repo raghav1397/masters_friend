@@ -15,6 +15,7 @@ import {
 // core components
 import DefaultFooter from "./DefaultFooter.js";
 import Navigation from "./Navigation/Navigation";
+import LandingPageHeader from "./LandingPageHeader"
 
 
 function LandingPage() {
@@ -33,6 +34,7 @@ function LandingPage() {
     <>
       <div className="wrapper">
       <Navigation />
+      <LandingPageHeader/>
         <div className="section section-about-us">
           <Container>
             <Row>

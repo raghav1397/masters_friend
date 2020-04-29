@@ -7,6 +7,7 @@ import Select from "react-select";
 import axios from "axios";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Navigation from "./Navigation/Navigation";
+import LandingPageHeader from "./LandingPageHeader";
 // import ReactDom from 'react-dom';
 
 class HomePage extends Component {
@@ -42,6 +43,7 @@ class HomePage extends Component {
       usc: "",
       neu: "",
       ncsu: "",
+      uni: {},
     };
   }
   componentDidMount() {
@@ -227,10 +229,8 @@ class HomePage extends Component {
         // this.props.history.push('/Predict')
       })
       .catch((error) => {});
-
-    axios
-      .post("https://masters-backend-1.wl.r.appspot.com/", {
-        // axios.post('https://820aedbf.ngrok.io/', {
+    axios.post("https://masters-backend-1.wl.r.appspot.com/", {
+    // axios.post("http://localhost:5000/", {
         email: this.state.email.toString(),
         grade: this.state.grade,
         gre: this.state.gre,
@@ -246,22 +246,22 @@ class HomePage extends Component {
         (response) => {
           console.log(response.data.mit.score);
           this.setState({
+            uni: response.data,
             mit: response.data.mit.score,
             utd: response.data.utd.score,
             ncsu: response.data.ncsu.score,
             neu: response.data.neu.score,
             usc: response.data.usc.score,
           });
+          console.log(this.state.uni);
+          const t = Object.keys(this.state.uni);
+          console.log(t);
+          for(var key in t){
+            console.log(key);
+          }
           this.props.history.push({
             pathname: "/Predict",
-            state: {
-              mit: this.state.mit,
-              first_name: this.state.first_name,
-              usc: this.state.usc,
-              ncsu: this.state.ncsu,
-              utd: this.state.utd,
-              neu: this.state.neu,
-            },
+            state: this.state,
           });
         },
         (error) => {
@@ -307,6 +307,7 @@ class HomePage extends Component {
     return (
       <Container>
         <Navigation />
+        <LandingPageHeader />
         <div>
           <h1>University Suggestor</h1>
           {!loading && <p className="centered">Hello {username}!</p>}
@@ -472,52 +473,59 @@ class HomePage extends Component {
               <Col sm="5">
                 <div className="form-group">
                   <label htmlFor="resume">Upload Resume</label>
-                  <input
-                    type="file"
-                    id="file-id"
-                    name="resume"
-                    className="form-control"
-                    // value={this.state.resume}
-                    onChange={this.onChangeresume}
-                  />
-                  <ProgressBar animated now={this.state.progressresume} />
-                  <p>
-                    NOTE : Preview the Document only after upload is
-                    complete....
-                  </p>
-                  <Button
-                    className="btn-round"
-                    type="button"
-                    onClick={this.Previewresume}
-                  >
-                    Preview Resume
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <Button className="btn-round" color="primary">
+                    Choose File
+                    <input
+                      type="file"
+                      id="file-id"
+                      name="resume"
+                      className="form-control"
+                      // value={this.state.resume}
+                      onChange={this.onChangeresume}
+                    />
                   </Button>
                 </div>
+                <ProgressBar animated now={this.state.progressresume} />
+                <p>
+                  NOTE : Preview the Document only after upload is complete....
+                </p>
+                <Button
+                  className="btn-round"
+                  type="button"
+                  onClick={this.Previewresume}
+                >
+                  Preview Resume
+                </Button>
               </Col>
               <Col sm="5">
                 <div className="form-group">
                   <label htmlFor="sop">Upload SOP</label>
-                  <input
-                    type="file"
-                    id="file-id2"
-                    name="sop"
-                    className="form-control"
-                    // value={this.state.sop}
-                    onChange={this.onChangesop}
-                  />
-                  <ProgressBar animated now={this.state.progresssop} />
-                  <p>
-                    NOTE : Preview the Document only after upload is
-                    complete....
-                  </p>
-                  <Button
-                    className="btn-round"
-                    type="button"
-                    onClick={this.Previewsop}
-                  >
-                    Preview SOP
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <Button className="btn-round" color="primary">
+                    Choose File
+                    <input
+                      type="file"
+                      id="file-id2"
+                      name="sop"
+                      className="form-control"
+                      // value={this.state.sop}
+                      onChange={this.onChangesop}
+                    />
                   </Button>
                 </div>
+                <ProgressBar animated now={this.state.progresssop} />
+                <p>
+                  NOTE : Preview the Document only after upload is complete....
+                </p>
+                <Button
+                  className="btn-round"
+                  type="button"
+                  onClick={this.Previewsop}
+                >
+                  Preview SOP
+                </Button>
+                {/* </div> */}
               </Col>
             </Row>
             <center>

@@ -15,6 +15,18 @@ def get_lor_score(lor1, lor2, lor3, lor4):
     if lor4 > 0: lors.append(lor4)
     return sum(lors)/(6.*len(lors))
 
+def get_model_predictions(univ, x):
+    names = ['KNN','ET','RF','SVC']
+    classifiers = [pkl.load(open('models/'+name+'/'+name+'_'+univ+'.pkl', 'rb')) for name in names]
+    est = pkl.load(open('models/LR_without_NN/LR_without_NN_'+univ+'.pkl','rb'))
+    pred = []
+    for clf in classifiers:
+        pred.append(clf.predict(x).reshape((-1,1)))
+    pred = np.hstack(tuple(pred))
+    score = est.predict_proba(pred)[0][1]
+    return score
+
+
 def get_score(gre, toefl, work_ex, grade, univ):
     min_max = pkl.load(open('models/min_max.pkl','rb'))
     mins = min_max[univ]['min']
@@ -23,14 +35,11 @@ def get_score(gre, toefl, work_ex, grade, univ):
     toefl = (toefl-mins['TOEFL'])/(maxs['TOEFL']-mins['TOEFL'])
     grade = (grade-mins['UNDERGRAD'])/(maxs['UNDERGRAD']-mins['UNDERGRAD'])
     work_ex = (work_ex-mins['WORK EX'])/(maxs['WORK EX']-mins['WORK EX'])
-    model = pkl.load(open('models/'+univ+'.pkl','rb'))
     x = np.array([gre,toefl,grade,work_ex]).reshape((1,-1))
-    probs = model.predict_proba(x)[0]
-    ac_prob, rej_prob = probs[0], probs[1]
-    if ac_prob > rej_prob:
-        return ac_prob
-    else:
-        return -rej_prob
+    probs = get_model_predictions(univ,x)
+    if probs < 0.5:
+        return -probs
+    return probs
 
 def text_cleaning(text):
     tokens = word_tokenize(text)

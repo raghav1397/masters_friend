@@ -36,7 +36,7 @@ class MastersFriendB2(Resource):
         # Retrieve post request values
         args = parser.parse_args()
         gre = float(args['gre'])
-        toefl = float(args['toefl'])
+        toefl= float(args['toefl'])
         grade = float(args['grade'])
         email = args['email']
         uid = args['uid']
@@ -46,20 +46,44 @@ class MastersFriendB2(Resource):
         lor3 = int(args['lor3'].split("\'value\'")[1][3]) if "{" in args['lor3'] else -1
         lor4 = int(args['lor4'].split("\'value\'")[1][3]) if "{" in args['lor4'] else -1
 
+        if toefl<10:
+            if toefl<=4:
+                toefl=31.
+            elif toefl<=4.5:
+                toefl=34.
+            elif toefl<=5:
+                toefl=45.
+            elif toefl<=5.5:
+                toefl=59.
+            elif toefl<=6:
+                toefl=78.
+            elif toefl<=6.5:
+                toefl=93.
+            elif toefl<=7:
+                toefl=101.
+            elif toefl<=7.5:
+                toefl=109.
+            elif toefl<=8:
+                toefl=114.
+            elif toefl<=8.5:
+                toefl=117.
+            else:
+                toefl=120
+
         univ = args['univ']
         print(univ)
         resume = np.array(args['resume'])
         sop = args['sop']
 
-        s1 = 0.6*get_score(gre, toefl, work_ex, grade, univ)
-        s2 = 0.3*get_sop_resume_score(resume, sop)
+        s1 = 0.8*get_score(gre, toefl, work_ex, grade, univ)
+        s2 = 0.1*get_sop_resume_score(resume, sop)
         s3 = 0.1*get_lor_score(lor1, lor2, lor3, lor4)
 
         print(s1,s2,s3)
 
         total_score = s1+s2+s3
 
-        return {'gre':gre,'toefl':toefl,'grade':grade,'email':email,'uid':uid,'work_ex':work_ex,'lor1':lor1,'lor2':lor2,'lor3':lor3,'lor4':lor4,'score':total_score}
+        return {'univ':univ,'score':total_score}
 
 api.add_resource(MastersFriendB2, '/')
 api.add_resource(Warmup, '/_ah/warmup')

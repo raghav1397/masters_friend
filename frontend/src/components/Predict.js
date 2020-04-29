@@ -31,22 +31,21 @@ class Predict extends Component {
       progressresume: "",
       url_resume: "",
       url_sop: "",
-      college1: "",
-      college2: "",
-      college3: "",
-      college4: "",
-      college5: "",
+      mit: "",
+      utd: "",
+      usc: "",
+      neu: "",
+      ncsu: "",
     };
-    console.log(this.props.location.state);
   }
   componentDidMount() {
     this.setState({
-      mit: this.props.location.state.mit,
       first_name: this.props.location.state.first_name,
-      usc: this.props.location.state.usc,
-      ncsu: this.props.location.state.ncsu,
+      mit: this.props.location.state.mit,
       utd: this.props.location.state.utd,
+      ncsu: this.props.location.state.ncsu,
       neu: this.props.location.state.neu,
+      usc: this.props.location.state.usc
     });
   }
 

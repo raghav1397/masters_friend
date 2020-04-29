@@ -32,7 +32,7 @@ function NavigationNonAuth() {
         <Container>
           <div className="navbar-translate">
             <NavbarBrand href="http://localhost:3000/" id="navbar-brand">
-              Masters Friend
+              <h6>Masters Friend</h6>
             </NavbarBrand>
             <UncontrolledTooltip target="#navbar-brand">
               A journey to unfold!
@@ -44,6 +44,7 @@ function NavigationNonAuth() {
                 setCollapseOpen(!collapseOpen);
               }}
               aria-expanded={collapseOpen}
+              aria-controls="basic-navbar-nav"
               type="button"
             >
               <span className="navbar-toggler-bar top-bar"></span>
