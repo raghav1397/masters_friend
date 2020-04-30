@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import SignUpForm from "./SignUpForm";
+import Navigation from "../Navigation/Navigation";
 
 import * as routes from "../../constants/routes";
 
 const SignUpPage = ({ history }) => (
   <div className="div-flex">
+    <Navigation/>
     <div>
       <SignUpForm history={history} />
     </div>

@@ -10,6 +10,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import Navigation from "../Navigation/Navigation";
 
 function Copyright() {
   return (
@@ -112,6 +113,7 @@ export default function PasswordChangeForm() {
 
   return (
     <Container component="main" maxWidth="xs">
+      <Navigation/>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>

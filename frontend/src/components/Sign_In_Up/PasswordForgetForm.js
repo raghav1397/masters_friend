@@ -12,6 +12,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Copyright from "../Copyright";
+import Navigation from "../Navigation/Navigation";
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -82,6 +84,7 @@ export default function PasswordForgetForm1() {
 
   return (
     <Container component="main" maxWidth="xs">
+      <Navigation/>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>

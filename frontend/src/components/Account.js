@@ -158,6 +158,7 @@ class AccountPage extends Component {
 
     return (
       <div>
+        <Navigation/>
         <Container>
           <center>
           {showingAlert && (

@@ -124,6 +124,9 @@ function NavigationNonAuth() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
+        <Button  variant="contained" color="secondary"  href={routes.LANDING}>Home</Button>
+      </MenuItem>
+      <MenuItem>
         <Button  variant="contained" color="secondary"  href={routes.HOME}>University Predictor</Button>
       </MenuItem>
       <MenuItem>
