@@ -7,7 +7,7 @@ import NavigationNonAuth from "./NavigationNoAuth";
 const Navigation = () => (
   <AuthUserContext.Consumer>
     {(authUser) =>
-      authUser ? <NavigationAuth userInfo={authUser} /> : <NavigationNonAuth />
+      authUser ? <NavigationAuth  userInfo={authUser} /> : <NavigationNonAuth />
     }
   </AuthUserContext.Consumer>
 );

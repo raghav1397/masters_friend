@@ -24,8 +24,7 @@ const SignInPage = ({ history }) => {
   return (
     <div className="div-flex">
       <div>
-        <h1 className="centered">Sign In</h1>
-        {/* <img src={logo} className="App-logo" alt="My logo" /> */}
+      <Navigation />
 
         <SignInForm history={history} />
         <Row>
@@ -120,8 +119,9 @@ class SignInForm extends Component {
     const isInvalid = password === "" || email === "";
 
     return (
+      
       <Container>
-        <Navigation />
+        <br></br>
         <div>
           {showingAlert && (
             <Alert color="danger" onLoad={this.timer}>
@@ -189,7 +189,7 @@ class SignInForm extends Component {
               />
               <br></br>
               <p>
-                NOTE: University Suggestor is only accessible by signed in
+                NOTE: University Predictor is only accessible by signed in
                 users.
               </p>
             </Col>

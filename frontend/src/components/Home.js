@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import { storage } from "../firebase/auth";
-import { Button, Container, Row, Col } from "reactstrap";
+import { Button, Container } from "reactstrap";
 import withAuthorization from "./withAuthorization";
 import { db } from "../firebase";
 import Select from "react-select";
 import axios from "axios";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Navigation from "./Navigation/Navigation";
-import LandingPageHeader from "./LandingPageHeader";
-// import ReactDom from 'react-dom';
 
 class HomePage extends Component {
   constructor(props) {
@@ -206,6 +204,7 @@ class HomePage extends Component {
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
+
   };
   onSubmit = (e) => {
     e.preventDefault();
@@ -304,16 +303,14 @@ class HomePage extends Component {
     ];
 
     return (
-      <Container>
+        <>
         <Navigation />
-        <LandingPageHeader />
+        <Container>
         <div>
-          <h1>University Suggestor</h1>
+          <br></br>
           {!loading && <p className="centered">Hello {username}!</p>}
           <form noValidate onSubmit={this.onSubmit}>
             <h1 className="h3 mb-3 font-weight-normal">Fill this Form</h1>
-            <Row>
-              <Col sm="5">
                 <div className="form-group">
                   <label htmlFor="name">First name</label>
                   <input
@@ -325,8 +322,6 @@ class HomePage extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-              </Col>
-              <Col sm="5">
                 <div className="form-group">
                   <label htmlFor="name">Last name</label>
                   <input
@@ -338,70 +333,6 @@ class HomePage extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col sm="5">
-                <div className="form-group">
-                  <label htmlFor="grade">College CGPA</label>
-                  <input
-                    type="number"
-                    className="form-control"
-                    pattern="[0-9]*"
-                    name="grade"
-                    placeholder="Enter Score"
-                    value={this.state.grade}
-                    onChange={this.onChange}
-                  />
-                </div>
-              </Col>
-              <Col sm="5">
-                <div className="form-group">
-                  <label htmlFor="we">Work Experience (Months)</label>
-                  <input
-                    type="number"
-                    className="form-control"
-                    pattern="[0-9]*"
-                    name="we"
-                    placeholder="Enter Months"
-                    value={this.state.we}
-                    onChange={this.onChange}
-                  />
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col sm="5">
-                <div className="form-group">
-                  <label htmlFor="gre">GRE</label>
-                  <input
-                    type="number"
-                    className="form-control"
-                    pattern="[0-9]*"
-                    name="gre"
-                    placeholder="Enter Score"
-                    value={this.state.gre}
-                    onChange={this.onChange}
-                  />
-                </div>
-              </Col>
-              <Col sm="5">
-                <div className="form-group">
-                  <label htmlFor="toefl">TOEFL/IELTS Score</label>
-                  <input
-                    type="number"
-                    className="form-control"
-                    pattern="[0-9]*"
-                    name="toefl"
-                    placeholder="Enter Score"
-                    value={this.state.toefl}
-                    onChange={this.onChange}
-                  />
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col sm="5">
                 <div className="form-group">
                   <label htmlFor="lor1">
                     Designation of your LOR Provider 1
@@ -416,8 +347,6 @@ class HomePage extends Component {
                     />
                   </div>
                 </div>
-              </Col>
-              <Col sm="5">
                 <div className="form-group">
                   <label htmlFor="lor2">
                     Designation of your LOR Provider 2
@@ -432,10 +361,6 @@ class HomePage extends Component {
                     />
                   </div>
                 </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col sm="5">
                 <div className="form-group">
                   <label htmlFor="lor3">
                     Designation of your LOR Provider 3
@@ -450,8 +375,6 @@ class HomePage extends Component {
                     />
                   </div>
                 </div>
-              </Col>
-              <Col sm="5">
                 <div className="form-group">
                   <label htmlFor="lor4">
                     Designation of your LOR Provider 4
@@ -466,14 +389,58 @@ class HomePage extends Component {
                     />
                   </div>
                 </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col sm="5">
+                <div className="form-group">
+                  <label htmlFor="grade">College CGPA (Out of 10)</label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    pattern="[0-9]*"
+                    name="grade"
+                    placeholder="Enter Score"
+                    value={this.state.grade}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="we">Work Experience (Months)</label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    pattern="[0-9]*"
+                    name="we"
+                    placeholder="Enter Months"
+                    value={this.state.we}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="gre">GRE (Out of 340)</label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    pattern="[0-9]*"
+                    name="gre"
+                    placeholder="Enter Score"
+                    value={this.state.gre}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="toefl">TOEFL (Out of 120) / IELTS (Out of 9)</label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    pattern="[0-9]*"
+                    name="toefl"
+                    placeholder="Enter Score"
+                    value={this.state.toefl}
+                    onChange={this.onChange}
+                  />
+                </div>
                 <div className="form-group">
                   <label htmlFor="resume">Upload Resume</label>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <Button className="btn-round" color="primary">
+                  <Button className="btn-round" color="info">
                     Choose File
                     <input
                       type="file"
@@ -496,12 +463,10 @@ class HomePage extends Component {
                 >
                   Preview Resume
                 </Button>
-              </Col>
-              <Col sm="5">
                 <div className="form-group">
                   <label htmlFor="sop">Upload SOP</label>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <Button className="btn-round" color="primary">
+                  <Button className="btn-round" color="info">
                     Choose File
                     <input
                       type="file"
@@ -524,9 +489,6 @@ class HomePage extends Component {
                 >
                   Preview SOP
                 </Button>
-                {/* </div> */}
-              </Col>
-            </Row>
             <center>
               <Button
                 // type="submit"
@@ -545,7 +507,8 @@ class HomePage extends Component {
 
           <p>NOTE : This page is only accessible by signed in users.</p>
         </div>
-      </Container>
+        </Container>
+        </>
     );
   }
 }

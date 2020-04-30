@@ -13,28 +13,20 @@ import {
 } from "reactstrap";
 
 // core components
-import DefaultFooter from "./DefaultFooter.js";
+// import DefaultFooter from "./DefaultFooter.js";
 import Navigation from "./Navigation/Navigation";
-import LandingPageHeader from "./LandingPageHeader"
+// import LandingPageHeader from "./LandingPageHeader"
 
 
 function LandingPage() {
   const [firstFocus, setFirstFocus] = React.useState(false);
   const [lastFocus, setLastFocus] = React.useState(false);
-  React.useEffect(() => {
-    document.body.classList.add("landing-page");
-    document.body.classList.add("sidebar-collapse");
-    document.documentElement.classList.remove("nav-open");
-    return function cleanup() {
-      document.body.classList.remove("landing-page");
-      document.body.classList.remove("sidebar-collapse");
-    };
-  });
+
   return (
     <>
       <div className="wrapper">
       <Navigation />
-      <LandingPageHeader/>
+      {/* <LandingPageHeader/> */}
         <div className="section section-about-us">
           <Container>
             <Row>
@@ -320,7 +312,7 @@ function LandingPage() {
             </Row>
           </Container>
         </div>
-        <DefaultFooter />
+        {/* <DefaultFooter /> */}
       </div>
     </>
   );
