@@ -31,7 +31,7 @@ function NavigationNonAuth() {
       <Navbar className="fixed-top" color="info" expand="lg">
         <Container>
           <div className="navbar-translate">
-            <NavbarBrand href="http://localhost:3000/" id="navbar-brand">
+            <NavbarBrand href="https://masters-273323.web.app" id="navbar-brand">
               <h6>Masters Friend</h6>
             </NavbarBrand>
             <UncontrolledTooltip target="#navbar-brand">

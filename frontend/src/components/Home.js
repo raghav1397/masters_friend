@@ -43,7 +43,7 @@ class HomePage extends Component {
       usc: "",
       neu: "",
       ncsu: "",
-      uni: {},
+      uni: []
     };
   }
   componentDidMount() {
@@ -254,11 +254,10 @@ class HomePage extends Component {
             usc: response.data.usc.score,
           });
           console.log(this.state.uni);
-          const t = Object.keys(this.state.uni);
-          console.log(t);
-          for(var key in t){
-            console.log(key);
-          }
+          Object.keys(this.state.uni).map((key) => (
+            console.log(key,this.state.uni[key].score)
+          )
+          )
           this.props.history.push({
             pathname: "/Predict",
             state: this.state,

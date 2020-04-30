@@ -1,25 +1,30 @@
 {
   "files": {
-    "main.css": "/static/css/main.2e5fa87a.chunk.css",
-    "main.js": "/static/js/main.eb6d6038.chunk.js",
-    "main.js.map": "/static/js/main.eb6d6038.chunk.js.map",
+    "main.css": "/static/css/main.75c58f97.chunk.css",
+    "main.js": "/static/js/main.21fd66ee.chunk.js",
+    "main.js.map": "/static/js/main.21fd66ee.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.2fac61c3.js",
     "runtime-main.js.map": "/static/js/runtime-main.2fac61c3.js.map",
-    "static/css/2.a5b4ddd2.chunk.css": "/static/css/2.a5b4ddd2.chunk.css",
-    "static/js/2.e13220d9.chunk.js": "/static/js/2.e13220d9.chunk.js",
-    "static/js/2.e13220d9.chunk.js.map": "/static/js/2.e13220d9.chunk.js.map",
+    "static/js/2.c04700c0.chunk.js": "/static/js/2.c04700c0.chunk.js",
+    "static/js/2.c04700c0.chunk.js.map": "/static/js/2.c04700c0.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.6df3da26907b53574e6bd5670d99a938.js": "/precache-manifest.6df3da26907b53574e6bd5670d99a938.js",
+    "precache-manifest.6d9de3fa22874b3f25dc0f37b878ac66.js": "/precache-manifest.6d9de3fa22874b3f25dc0f37b878ac66.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/2.a5b4ddd2.chunk.css.map": "/static/css/2.a5b4ddd2.chunk.css.map",
-    "static/css/main.2e5fa87a.chunk.css.map": "/static/css/main.2e5fa87a.chunk.css.map",
-    "static/js/2.e13220d9.chunk.js.LICENSE.txt": "/static/js/2.e13220d9.chunk.js.LICENSE.txt"
+    "static/css/main.75c58f97.chunk.css.map": "/static/css/main.75c58f97.chunk.css.map",
+    "static/js/2.c04700c0.chunk.js.LICENSE.txt": "/static/js/2.c04700c0.chunk.js.LICENSE.txt",
+    "static/media/avatar.jpg": "/static/media/avatar.7257a1a9.jpg",
+    "static/media/bg1.jpg": "/static/media/bg1.6b1983a2.jpg",
+    "static/media/bg3.jpg": "/static/media/bg3.f807b37b.jpg",
+    "static/media/bg6.jpg": "/static/media/bg6.d7d1aaf7.jpg",
+    "static/media/eva.jpg": "/static/media/eva.089c4f4e.jpg",
+    "static/media/login.jpg": "/static/media/login.b2101951.jpg",
+    "static/media/now-ui-kit.css": "/static/media/nucleo-outline.8ebec31f.woff2",
+    "static/media/ryan.jpg": "/static/media/ryan.f217f346.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.2fac61c3.js",
-    "static/css/2.a5b4ddd2.chunk.css",
-    "static/js/2.e13220d9.chunk.js",
-    "static/css/main.2e5fa87a.chunk.css",
-    "static/js/main.eb6d6038.chunk.js"
+    "static/js/2.c04700c0.chunk.js",
+    "static/css/main.75c58f97.chunk.css",
+    "static/js/main.21fd66ee.chunk.js"
   ]
 }
