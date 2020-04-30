@@ -158,15 +158,14 @@ class AccountPage extends Component {
 
     return (
       <div>
-        <Navigation />
         <Container>
+          <center>
           {showingAlert && (
             <Alert color="danger" onLoad={this.timer}>
               {error.message}
             </Alert>
           )}
           <br></br>
-          <h5>Reset Link will be sent to your Email</h5>
           <br></br>
           <Form onSubmit={this.onSubmit}>
             <div className="text-center">
@@ -177,8 +176,6 @@ class AccountPage extends Component {
             <br></br>
             <h1 className="h3 mb-3 font-weight-normal">Your Form Data</h1>
 
-            <Row>
-              <Col sm="5">
                 <div className="form-group">
                   <label htmlFor="name">First name</label>
                   <input
@@ -189,8 +186,6 @@ class AccountPage extends Component {
                     value={this.state.first_name}
                   />
                 </div>
-              </Col>
-              <Col sm="5">
                 <div className="form-group">
                   <label htmlFor="name">Last name</label>
                   <input
@@ -201,11 +196,7 @@ class AccountPage extends Component {
                     value={this.state.last_name}
                   />
                 </div>
-              </Col>
-            </Row>
 
-            <Row>
-              <Col sm="5">
                 <div className="form-group">
                   <label htmlFor="grade">College CGPA</label>
                   <input
@@ -217,8 +208,6 @@ class AccountPage extends Component {
                     value={this.state.grade}
                   />
                 </div>
-              </Col>
-              <Col sm="5">
                 <div className="form-group">
                   <label htmlFor="gre">GRE</label>
                   <input
@@ -230,11 +219,7 @@ class AccountPage extends Component {
                     value={this.state.gre}
                   />
                 </div>
-              </Col>
-            </Row>
 
-            <Row>
-              <Col sm="5">
                 <div className="form-group">
                   <label htmlFor="we">Work Experience (Months)</label>
                   <input
@@ -246,8 +231,6 @@ class AccountPage extends Component {
                     value={this.state.we}
                   />
                 </div>
-              </Col>
-              <Col sm="5">
                 <div className="form-group">
                   <label htmlFor="toefl">TOEFL/IELTS Score</label>
                   <input
@@ -259,11 +242,7 @@ class AccountPage extends Component {
                     value={this.state.toefl}
                   />
                 </div>
-              </Col>
-            </Row>
 
-            <Row>
-              <Col sm="5">
                 <div className="form-group">
                   <label htmlFor="lor1">
                     Designation of your LOR Provider 1
@@ -276,8 +255,7 @@ class AccountPage extends Component {
                     value={this.state.lor1.label}
                   />
                 </div>
-              </Col>
-              <Col sm="5">
+
                 <div className="form-group">
                   <label htmlFor="lor2">
                     Designation of your LOR Provider 2
@@ -290,11 +268,7 @@ class AccountPage extends Component {
                     value={this.state.lor2.label}
                   />
                 </div>
-              </Col>
-            </Row>
 
-            <Row>
-              <Col sm="5">
                 <div className="form-group">
                   <label htmlFor="lor3">
                     Designation of your LOR Provider 3
@@ -307,8 +281,7 @@ class AccountPage extends Component {
                     value={this.state.lor3.label}
                   />
                 </div>
-              </Col>
-              <Col sm="5">
+
                 <div className="form-group">
                   <label htmlFor="lor4">
                     Designation of your LOR Provider 4
@@ -321,11 +294,7 @@ class AccountPage extends Component {
                     value={this.state.lor4.label}
                   />
                 </div>
-              </Col>
-            </Row>
 
-            <Row>
-              <Col sm="5">
                 <div className="form-group">
                   <label htmlFor="resume">Uploaded Resume</label>
                   <br></br>
@@ -335,8 +304,6 @@ class AccountPage extends Component {
                     </Button>
                   </center>
                 </div>
-              </Col>
-              <Col sm="5">
                 <div className="form-group">
                   <label htmlFor="sop">Uploaded SOP</label>
                   <br></br>
@@ -346,9 +313,6 @@ class AccountPage extends Component {
                     </Button>
                   </center>
                 </div>
-              </Col>
-            </Row>
-            <center>
               <p>
                 NOTE : If you have not updated a field in the form, the field
                 will be blank !!!
@@ -356,9 +320,9 @@ class AccountPage extends Component {
               <Button type="button" onClick={this.Page}>
                 Click Here to Edit your Form
               </Button>
-            </center>
           </form>
           <br></br>
+          </center>
         </Container>
       </div>
     );
