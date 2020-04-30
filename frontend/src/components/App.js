@@ -12,10 +12,6 @@ import SignInPage from "./Sign_In_Up/SignIn";
 import PasswordForgetPage from "./Sign_In_Up/PasswordForget";
 import HomePage from "./Home";
 import AccountPage from "./Account";
-import SignInForm from "./Sign_In_Up/SignInForm";
-import SignUpForm from "./Sign_In_Up/SignUpForm";
-import PasswordChangeForm from "./Sign_In_Up/PasswordChange"
-import PasswordForgetForm1 from "./Sign_In_Up/PasswordForgetForm"
 import Predict from "./Predict";
 
 import withAuthentication from "./withAuthentication";
@@ -39,8 +35,4 @@ const App = () => (
 );
 
 export default withAuthentication(App); //using HoC to handle session
-// const PORT = process.env.PORT || 8080;
-// app.listen(PORT, () => {
-//   console.log(`App listening on port ${PORT}`);
-//   console.log('Press Ctrl+C to quit.');
-// });
+

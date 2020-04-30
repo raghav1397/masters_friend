@@ -1,30 +1,34 @@
 import React from "react";
-
 // reactstrap components
 import {
   Button,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Container,
   Row,
   Col
 } from "reactstrap";
-
 // core components
-// import DefaultFooter from "./DefaultFooter.js";
 import Navigation from "./Navigation/Navigation";
-// import LandingPageHeader from "./LandingPageHeader"
-
-
+import { useTheme } from "@material-ui/core/styles";
+import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+import { createMuiTheme } from "@material-ui/core/styles/index";
+export const customTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#4285F4",
+    },
+    secondary: {
+      main: "#DB4437", // yellow = "#F4B400", green = "#0F9D58"
+    }
+  },
+});
 function LandingPage() {
+  const theme = useTheme();
   const [firstFocus, setFirstFocus] = React.useState(false);
   const [lastFocus, setLastFocus] = React.useState(false);
-
   return (
     <>
       <div className="wrapper">
+      <MuiThemeProvider theme={customTheme}>
       <Navigation />
       {/* <LandingPageHeader/> */}
         <div className="section section-about-us">
@@ -32,12 +36,14 @@ function LandingPage() {
             <Row>
               <Col className="ml-auto mr-auto text-center" md="8">
                 <h2 className="title">Who we are?</h2>
-                <h5 className="description">
-                  According to the National Oceanic and Atmospheric
-                  Administration, Ted, Scambos, NSIDClead scentist, puts the
-                  potentially record low maximum sea ice extent tihs year down
-                  to low ice extent in the Pacific and a late drop in ice extent
-                  in the Barents Sea.
+                <h5>
+                  According to a surey, many masters students have little information
+                  about the universities they apply to and have little idea about the
+                  universities to choose to apply. Furthermore, it gets really hard to do
+                  all this by referring so many places. That's why we are here! Make your
+                  life simpler by calling your Masters Friend. We work to provide you the
+                  best service possible for helping you through the rpocess of choosing
+                  universities and applying to them.
                 </h5>
               </Col>
             </Row>
@@ -49,22 +55,21 @@ function LandingPage() {
                     className="image-container image-left"
                     style={{
                       backgroundImage:
-                        "url(" + require("../assets/img/login.jpg") + ")"
+                        "url(https://ucsdnews.ucsd.edu/news_uploads/geisel-dusk-160504.jpg)"
                     }}
                   >
                     <p className="blockquote blockquote-info">
-                      "Over the span of the satellite record, Arctic sea ice has
-                      been declining significantly, while sea ice in the
-                      Antarctichas increased very slightly" <br></br>
+                      "Over the years, the numebr of masters students has exponentially 
+                      increased but help hasn't. There needs to be a platform to guide 
+                      students more procreativey and productively" <br></br>
                       <br></br>
-                      <small>-NOAA</small>
                     </p>
                   </div>
                   <div
                     className="image-container"
                     style={{
                       backgroundImage:
-                        "url(" + require("../assets/img/bg3.jpg") + ")"
+                        "url(https://p.kindpng.com/picc/s/412-4126368_collage-of-ivy-league-logos-png-download-collage.png)"
                     }}
                   ></div>
                 </Col>
@@ -73,41 +78,33 @@ function LandingPage() {
                     className="image-container image-right"
                     style={{
                       backgroundImage:
-                        "url(" + require("../assets/img/bg1.jpg") + ")"
+                        "url(https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/2019_UCLA_Royce_Hall_2.jpg/325px-2019_UCLA_Royce_Hall_2.jpg)"
                     }}
                   ></div>
                   <h3>
-                    So what does the new record for the lowest level of winter
-                    ice actually mean
+                    
                   </h3>
                   <p>
-                    The Arctic Ocean freezes every winter and much of the
-                    sea-ice then thaws every summer, and that process will
-                    continue whatever happens with climate change. Even if the
-                    Arctic continues to be one of the fastest-warming regions of
-                    the world, it will always be plunged into bitterly cold
-                    polar dark every winter. And year-by-year, for all kinds of
-                    natural reasons, there’s huge variety of the state of the
-                    ice.
+                  A Master of Science degree (or MSc for short) is a degree awarded 
+                  at universities around the world for completion of graduate-level 
+                  study in a science- or technology-related field.Enrolling in an MSc 
+                  degree program translates to making a significant investment in one's 
+                  professional career. In addition to the enhanced career prospects that 
+                  can be gained by taking a Master of Science, students also develop 
+                  valuable personal skills and fulfill a crucial prerequisite to PhD study. 
+                  Biological and Life Sciences, Business, Engineering and Technology, 
+                  and the Natural Sciences are the key academic fields of study that 
+                  offer Master of Science degree programs.
                   </p>
                   <p>
-                    For a start, it does not automatically follow that a record
-                    amount of ice will melt this summer. More important for
-                    determining the size of the annual thaw is the state of the
-                    weather as the midnight sun approaches and temperatures
-                    rise. But over the more than 30 years of satellite records,
-                    scientists have observed a clear pattern of decline,
-                    decade-by-decade.
-                  </p>
-                  <p>
-                    The Arctic Ocean freezes every winter and much of the
-                    sea-ice then thaws every summer, and that process will
-                    continue whatever happens with climate change. Even if the
-                    Arctic continues to be one of the fastest-warming regions of
-                    the world, it will always be plunged into bitterly cold
-                    polar dark every winter. And year-by-year, for all kinds of
-                    natural reasons, there’s huge variety of the state of the
-                    ice.
+                  Master of Science candidates normally have to do independent 
+                  research and present a thesis as a requirement for graduation.It's also 
+                  easier to get a job after graduation due to the fact that holding a master's 
+                  degree sets the benchmark on what your capabilities are. With a master's 
+                  degree, you are much more marketable in the professional world, which 
+                  makes you more desirable to employers. Anything that gives you an increase 
+                  in desirability is one of the single most important things you can 
+                  do when it comes to starting a career.
                   </p>
                 </Col>
               </Row>
@@ -119,127 +116,66 @@ function LandingPage() {
             <h2 className="title">Here is our team</h2>
             <div className="team">
               <Row>
-                <Col md="4">
+                <Col md="6">
                   <div className="team-player">
                     <img
                       alt="..."
                       className="rounded-circle img-fluid img-raised"
-                      src={require("../assets/img/avatar.jpg")}
+                      src="https://media-exp1.licdn.com/dms/image/C5103AQEYjhjGOQz8AA/profile-displayphoto-shrink_200_200/0?e=1593648000&v=beta&t=3s1x9COhuC5ubFcVOig2h3Nb-mLthANiAVdpXwmimNc"
                     ></img>
-                    <h4 className="title">Romina Hadid</h4>
-                    <p className="category text-info">Model</p>
+                    <h4 className="title">Raghavendhar Thiruvoipadi</h4>
+                    <p className="category text-info">Fullstack developer and ML Specialist</p>
                     <p className="description">
-                      You can write here details about one of your team members.
-                      You can give more details about what they do. Feel free to
-                      add some{" "}
-                      <a href="#pablo" onClick={e => e.preventDefault()}>
-                        links
-                      </a>{" "}
-                      for people to be able to follow them outside the site.
+                      Develped several applications using ReactJS, React-Native and Adnroid
+                      App Studio. Trained in statistical machine learning and cloud
+                      computing standards.
                     </p>
                     <Button
                       className="btn-icon btn-round"
                       color="info"
-                      href="#pablo"
+                      href="http://github.com/raghav1397"
                       onClick={e => e.preventDefault()}
                     >
-                      <i className="fab fa-twitter"></i>
+                      <i className="fab fa-github"></i>
                     </Button>
                     <Button
                       className="btn-icon btn-round"
                       color="info"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fab fa-instagram"></i>
-                    </Button>
-                    <Button
-                      className="btn-icon btn-round"
-                      color="info"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fab fa-facebook-square"></i>
-                    </Button>
-                  </div>
-                </Col>
-                <Col md="4">
-                  <div className="team-player">
-                    <img
-                      alt="..."
-                      className="rounded-circle img-fluid img-raised"
-                      src={require("../assets/img/ryan.jpg")}
-                    ></img>
-                    <h4 className="title">Ryan Tompson</h4>
-                    <p className="category text-info">Designer</p>
-                    <p className="description">
-                      You can write here details about one of your team members.
-                      You can give more details about what they do. Feel free to
-                      add some{" "}
-                      <a href="#pablo" onClick={e => e.preventDefault()}>
-                        links
-                      </a>{" "}
-                      for people to be able to follow them outside the site.
-                    </p>
-                    <Button
-                      className="btn-icon btn-round"
-                      color="info"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fab fa-twitter"></i>
-                    </Button>
-                    <Button
-                      className="btn-icon btn-round"
-                      color="info"
-                      href="#pablo"
+                      href="https://www.linkedin.com/in/raghavendhar-vidyasagar/"
                       onClick={e => e.preventDefault()}
                     >
                       <i className="fab fa-linkedin"></i>
                     </Button>
                   </div>
                 </Col>
-                <Col md="4">
+                <Col md="6">
                   <div className="team-player">
                     <img
                       alt="..."
                       className="rounded-circle img-fluid img-raised"
-                      src={require("../assets/img/eva.jpg")}
+                      src="https://media-exp1.licdn.com/dms/image/C4E03AQHpyQdYHw2rfw/profile-displayphoto-shrink_200_200/0?e=1593648000&v=beta&t=rtrMjNYR5kuN4oNkFsbDCrzrSrubkWw6pUS2zQdFdYo"
                     ></img>
-                    <h4 className="title">Eva Jenner</h4>
-                    <p className="category text-info">Fashion</p>
+                    <h4 className="title">Nithish Moudhgalya</h4>
+                    <p className="category text-info">Fullstack developer and ML Specialist</p>
                     <p className="description">
-                      You can write here details about one of your team members.
-                      You can give more details about what they do. Feel free to
-                      add some{" "}
-                      <a href="#pablo" onClick={e => e.preventDefault()}>
-                        links
-                      </a>{" "}
-                      for people to be able to follow them outside the site.
+                      Developed several applications using ReactJS, Flask and Android App Studio. 
+                      Specialized in machine and deep learning. Trained in cloud computing standards.
                     </p>
                     <Button
                       className="btn-icon btn-round"
                       color="info"
-                      href="#pablo"
+                      href="http://github.com/nithishb"
                       onClick={e => e.preventDefault()}
                     >
-                      <i className="fab fa-google-plus"></i>
+                      <i className="fab fa-github"></i>
                     </Button>
                     <Button
                       className="btn-icon btn-round"
                       color="info"
-                      href="#pablo"
+                      href="http://linked.com/in/nithish-moudhgalya"
                       onClick={e => e.preventDefault()}
                     >
-                      <i className="fab fa-youtube"></i>
-                    </Button>
-                    <Button
-                      className="btn-icon btn-round"
-                      color="info"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fab fa-twitter"></i>
+                      <i className="fab fa-linkedin"></i>
                     </Button>
                   </div>
                 </Col>
@@ -247,75 +183,9 @@ function LandingPage() {
             </div>
           </Container>
         </div>
-        <div className="section section-contact-us text-center">
-          <Container>
-            <h2 className="title">Want to work with us?</h2>
-            <p className="description">Your project is very important to us.</p>
-            <Row>
-              <Col className="text-center ml-auto mr-auto" lg="6" md="8">
-                <InputGroup
-                  className={
-                    "input-lg" + (firstFocus ? " input-group-focus" : "")
-                  }
-                >
-                  <InputGroupAddon addonType="prepend">
-                    <InputGroupText>
-                      <i className="now-ui-icons users_circle-08"></i>
-                    </InputGroupText>
-                  </InputGroupAddon>
-                  <Input
-                    placeholder="First Name..."
-                    type="text"
-                    onFocus={() => setFirstFocus(true)}
-                    onBlur={() => setFirstFocus(false)}
-                  ></Input>
-                </InputGroup>
-                <InputGroup
-                  className={
-                    "input-lg" + (lastFocus ? " input-group-focus" : "")
-                  }
-                >
-                  <InputGroupAddon addonType="prepend">
-                    <InputGroupText>
-                      <i className="now-ui-icons ui-1_email-85"></i>
-                    </InputGroupText>
-                  </InputGroupAddon>
-                  <Input
-                    placeholder="Email..."
-                    type="text"
-                    onFocus={() => setLastFocus(true)}
-                    onBlur={() => setLastFocus(false)}
-                  ></Input>
-                </InputGroup>
-                <div className="textarea-container">
-                  <Input
-                    cols="80"
-                    name="name"
-                    placeholder="Type a message..."
-                    rows="4"
-                    type="textarea"
-                  ></Input>
-                </div>
-                <div className="send-button">
-                  <Button
-                    block
-                    className="btn-round"
-                    color="info"
-                    href="#pablo"
-                    onClick={e => e.preventDefault()}
-                    size="lg"
-                  >
-                    Send Message
-                  </Button>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-        {/* <DefaultFooter /> */}
+        </MuiThemeProvider>
       </div>
     </>
   );
 }
-
 export default LandingPage;

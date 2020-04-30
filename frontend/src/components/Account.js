@@ -1,10 +1,24 @@
 import React, { Component } from "react";
-import { Button, Form, Alert, Container, Row, Col } from "reactstrap";
+import { Button, Form, Alert, Container } from "reactstrap";
 import withAuthorization from "./withAuthorization"; //redirects to sign in if user not signed in
 import { auth } from "../firebase";
 import { db } from "../firebase";
 import { storage } from "../firebase/auth";
 import Navigation from "./Navigation/Navigation";
+import { useTheme } from "@material-ui/core/styles";
+import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+import { createMuiTheme } from "@material-ui/core/styles/index";
+
+export const customTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#4285F4",
+    },
+    secondary: {
+      main: "#DB4437", // yellow = "#F4B400", green = "#0F9D58"
+    }
+  },
+});
 
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]: value,
@@ -157,7 +171,9 @@ class AccountPage extends Component {
     const { error, showingAlert } = this.state;
 
     return (
+      
       <div>
+        <MuiThemeProvider theme={customTheme}>
         <Navigation/>
         <Container>
           <center>
@@ -318,13 +334,14 @@ class AccountPage extends Component {
                 NOTE : If you have not updated a field in the form, the field
                 will be blank !!!
               </p>
-              <Button type="button" onClick={this.Page}>
+              <Button type="button" color="success" onClick={this.Page}>
                 Click Here to Edit your Form
               </Button>
           </form>
           <br></br>
           </center>
         </Container>
+        </MuiThemeProvider>
       </div>
     );
   }

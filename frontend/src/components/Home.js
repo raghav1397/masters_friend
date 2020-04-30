@@ -7,6 +7,21 @@ import Select from "react-select";
 import axios from "axios";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Navigation from "./Navigation/Navigation";
+import LoadingOverlay from 'react-loading-overlay';
+import { useTheme } from "@material-ui/core/styles";
+import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+import { createMuiTheme } from "@material-ui/core/styles/index";
+
+export const customTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#4285F4",
+    },
+    secondary: {
+      main: "#DB4437", // yellow = "#F4B400", green = "#0F9D58"
+    }
+  },
+});
 
 class HomePage extends Component {
   constructor(props) {
@@ -36,15 +51,13 @@ class HomePage extends Component {
       progressresume: "",
       url_resume: "",
       url_sop: "",
-      mit: "",
-      utd: "",
-      usc: "",
-      neu: "",
-      ncsu: "",
-      uni: []
+      uni: [],
+      loading1: false
     };
   }
+
   componentDidMount() {
+    // const theme = useTheme();
     const { loggedUser } = this.props;
     if (loggedUser) {
       db.doGetAnUnser(loggedUser.uid).then((res) => {
@@ -209,6 +222,9 @@ class HomePage extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     console.log(this.state);
+    this.setState({
+      loading1: true
+    })
     db.doCreateFrom(
       this.state.username,
       this.state.email,
@@ -243,20 +259,24 @@ class HomePage extends Component {
       })
       .then(
         (response) => {
-          console.log(response.data.mit.score);
           this.setState({
-            uni: response.data,
-            mit: response.data.mit.score,
-            utd: response.data.utd.score,
-            ncsu: response.data.ncsu.score,
-            neu: response.data.neu.score,
-            usc: response.data.usc.score,
+            uni: response.data
           });
           console.log(this.state.uni);
           Object.keys(this.state.uni).map((key) => (
             console.log(key,this.state.uni[key].score)
           )
           )
+          var a = 1;
+          for (let [key, value] of Object.entries(this.state.uni)) {
+            console.log(`${key}: ${value.score}`);
+            this.setState({
+              ["univ"+a]: key,
+              ["univ_score"+a]: value.score,
+            })
+            a = a+1;
+          }
+          console.log(this.state)
           this.props.history.push({
             pathname: "/Predict",
             state: this.state,
@@ -304,7 +324,13 @@ class HomePage extends Component {
 
     return (
         <>
+        <MuiThemeProvider theme={customTheme}>
         <Navigation />
+        <LoadingOverlay
+        active={this.state.loading1}
+        spinner
+        text='Sit Back and Relax.....'
+        >
         <Container>
         <div>
           <br></br>
@@ -438,8 +464,8 @@ class HomePage extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="resume">Upload Resume</label>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <label htmlFor="resume">Upload Resume (Only PDF)</label>
+                  <br></br>
                   <Button className="btn-round" color="info">
                     Choose File
                     <input
@@ -464,8 +490,8 @@ class HomePage extends Component {
                   Preview Resume
                 </Button>
                 <div className="form-group">
-                  <label htmlFor="sop">Upload SOP</label>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <label htmlFor="sop">Upload SOP (Only PDF)</label>
+                  <br></br>
                   <Button className="btn-round" color="info">
                     Choose File
                     <input
@@ -508,6 +534,8 @@ class HomePage extends Component {
           <p>NOTE : This page is only accessible by signed in users.</p>
         </div>
         </Container>
+        </LoadingOverlay>
+        </MuiThemeProvider>
         </>
     );
   }
