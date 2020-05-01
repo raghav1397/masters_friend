@@ -186,6 +186,10 @@ export default function SignInForm(props) {
       <Box mt={8}>
         <GoogleLoginButton onClick={facebookLogin}/>
       </Box>
+      <br></br>
+      <center>
+      <p>NOTE : Sign In to use Univesity Predictor</p>
+      </center>
       <Box mt={8}>
         <Copyright />
       </Box>

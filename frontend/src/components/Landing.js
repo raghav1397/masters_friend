@@ -56,7 +56,7 @@ function LandingPage() {
                   universities to choose to apply. Furthermore, it gets really hard to do
                   all this by referring so many places. That's why we are here! Make your
                   life simpler by calling your Masters Friend. We work to provide you the
-                  best service possible for helping you through the rpocess of choosing
+                  best service possible for helping you through the pocess of choosing
                   universities and applying to them.
                 </h5>
               </Col>
@@ -73,7 +73,7 @@ function LandingPage() {
                     }}
                   >
                     <p className="blockquote blockquote-info">
-                      "Over the years, the numebr of masters students has exponentially 
+                      "Over the years, the number of masters students has exponentially 
                       increased but help hasn't. There needs to be a platform to guide 
                       students more procreativey and productively" <br></br>
                       <br></br>

@@ -326,7 +326,7 @@ class AccountPage extends Component {
                   <br></br>
                   <center>
                     <Button type="button" onClick={this.Previewsop}>
-                      Preview Resume
+                      Preview SOP
                     </Button>
                   </center>
                 </div>
