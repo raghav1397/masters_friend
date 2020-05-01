@@ -4,8 +4,8 @@ import { withRouter } from "react-router-dom";
 import SignInForm from "./SignInForm" 
 // import * as routes from "../constants/routes";
 import Navigation from "../Navigation/Navigation";
-import { useTheme } from "@material-ui/core/styles";
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+import { ThemeProvider} from "@material-ui/core/styles";
+// import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import { createMuiTheme } from "@material-ui/core/styles/index";
 
 export const customTheme = createMuiTheme({
@@ -20,15 +20,15 @@ export const customTheme = createMuiTheme({
 });
 
 const SignInPage = ({ history }) => {
-  const theme = useTheme();
+ 
   return (
     <div className="div-flex">
-      <MuiThemeProvider theme={customTheme}>
+      <ThemeProvider theme={customTheme}>
       <Navigation/>
       <div>
         <SignInForm history={history} />
       </div>
-      </MuiThemeProvider>
+      </ThemeProvider>
     </div>
   );
 };

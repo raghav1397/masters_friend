@@ -5,8 +5,8 @@ import { auth } from "../firebase";
 import { db } from "../firebase";
 import { storage } from "../firebase/auth";
 import Navigation from "./Navigation/Navigation";
-import { useTheme } from "@material-ui/core/styles";
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+import { ThemeProvider} from "@material-ui/core/styles";
+// import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import { createMuiTheme } from "@material-ui/core/styles/index";
 
 export const customTheme = createMuiTheme({
@@ -173,7 +173,7 @@ class AccountPage extends Component {
     return (
       
       <div>
-        <MuiThemeProvider theme={customTheme}>
+        <ThemeProvider theme={customTheme}>
         <Navigation/>
         <Container>
           <center>
@@ -341,7 +341,7 @@ class AccountPage extends Component {
           <br></br>
           </center>
         </Container>
-        </MuiThemeProvider>
+        </ThemeProvider>
       </div>
     );
   }

@@ -8,8 +8,8 @@ import {
 } from "reactstrap";
 // core components
 import Navigation from "./Navigation/Navigation";
-import { useTheme } from "@material-ui/core/styles";
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+import { ThemeProvider} from "@material-ui/core/styles";
+// import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import { createMuiTheme } from "@material-ui/core/styles/index";
 export const customTheme = createMuiTheme({
   palette: {
@@ -22,13 +22,27 @@ export const customTheme = createMuiTheme({
   },
 });
 function LandingPage() {
-  const theme = useTheme();
-  const [firstFocus, setFirstFocus] = React.useState(false);
-  const [lastFocus, setLastFocus] = React.useState(false);
+
+  function Github_rag() {
+    window.open("http://github.com/raghav1397",'_blank');
+  }
+
+  function Github_nit() {
+    window.open("http://github.com/nithishb",'_blank');
+  }
+
+  function Linkedin_rag() {
+    window.open("https://www.linkedin.com/in/raghavendhar-vidyasagar/",'_blank');
+  }
+
+  function Linkedin_nit() {
+    window.open("https://www.linkedin.com/in/nithish-moudhgalya/",'_blank');
+  }
+
   return (
     <>
       <div className="wrapper">
-      <MuiThemeProvider theme={customTheme}>
+      <ThemeProvider theme={customTheme}>
       <Navigation />
       {/* <LandingPageHeader/> */}
         <div className="section section-about-us">
@@ -126,23 +140,23 @@ function LandingPage() {
                     <h4 className="title">Raghavendhar Thiruvoipadi</h4>
                     <p className="category text-info">Fullstack developer and ML Specialist</p>
                     <p className="description">
-                      Develped several applications using ReactJS, React-Native and Adnroid
+                      Develped several applications using ReactJS, React-Native and Android
                       App Studio. Trained in statistical machine learning and cloud
                       computing standards.
                     </p>
                     <Button
                       className="btn-icon btn-round"
                       color="info"
-                      href="http://github.com/raghav1397"
-                      onClick={e => e.preventDefault()}
+                      // href="http://github.com/raghav1397"
+                      onClick={Github_rag}
                     >
                       <i className="fab fa-github"></i>
                     </Button>
                     <Button
                       className="btn-icon btn-round"
                       color="info"
-                      href="https://www.linkedin.com/in/raghavendhar-vidyasagar/"
-                      onClick={e => e.preventDefault()}
+                      // href="https://www.linkedin.com/in/raghavendhar-vidyasagar/"
+                      onClick={Linkedin_rag}
                     >
                       <i className="fab fa-linkedin"></i>
                     </Button>
@@ -164,16 +178,16 @@ function LandingPage() {
                     <Button
                       className="btn-icon btn-round"
                       color="info"
-                      href="http://github.com/nithishb"
-                      onClick={e => e.preventDefault()}
+                      // href="http://github.com/nithishb"
+                      onClick={Github_nit}
                     >
                       <i className="fab fa-github"></i>
                     </Button>
                     <Button
                       className="btn-icon btn-round"
                       color="info"
-                      href="http://linked.com/in/nithish-moudhgalya"
-                      onClick={e => e.preventDefault()}
+                      // href="http://linked.com/in/nithish-moudhgalya"
+                      onClick={Linkedin_nit}
                     >
                       <i className="fab fa-linkedin"></i>
                     </Button>
@@ -183,9 +197,10 @@ function LandingPage() {
             </div>
           </Container>
         </div>
-        </MuiThemeProvider>
+        </ThemeProvider>
       </div>
     </>
   );
 }
+
 export default LandingPage;

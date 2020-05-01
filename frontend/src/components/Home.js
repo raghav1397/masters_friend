@@ -8,8 +8,8 @@ import axios from "axios";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Navigation from "./Navigation/Navigation";
 import LoadingOverlay from 'react-loading-overlay';
-import { useTheme } from "@material-ui/core/styles";
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+import { ThemeProvider} from "@material-ui/core/styles";
+// import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import { createMuiTheme } from "@material-ui/core/styles/index";
 
 export const customTheme = createMuiTheme({
@@ -324,7 +324,7 @@ class HomePage extends Component {
 
     return (
         <>
-        <MuiThemeProvider theme={customTheme}>
+        <ThemeProvider theme={customTheme}>
         <Navigation />
         <LoadingOverlay
         active={this.state.loading1}
@@ -535,7 +535,7 @@ class HomePage extends Component {
         </div>
         </Container>
         </LoadingOverlay>
-        </MuiThemeProvider>
+        </ThemeProvider>
         </>
     );
   }

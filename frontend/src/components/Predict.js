@@ -9,6 +9,19 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { ThemeProvider} from "@material-ui/core/styles";
+import { createMuiTheme } from "@material-ui/core/styles/index";
+
+export const customTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#4285F4",
+    },
+    secondary: {
+      main: "#DB4437", // yellow = "#F4B400", green = "#0F9D58"
+    }
+  },
+});
 
 const useStyles = makeStyles({
   root: {
@@ -385,9 +398,11 @@ class Predict extends Component {
   }
 
   render() {
-    
+  
     return (
       <>
+      <div>
+      <ThemeProvider theme={customTheme}>
       <Navigation />
         <div>
           <center>
@@ -401,6 +416,8 @@ class Predict extends Component {
           </center>
         </div>
         <ImgMediaCard history={this.state}/>
+        </ThemeProvider>
+        </div>
       </>
     );
   }

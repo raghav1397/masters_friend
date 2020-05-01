@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import * as routes from "../../constants/routes";
 import PasswordForgetForm1 from "./PasswordForgetForm"
 import Navigation from "../Navigation/Navigation";
-import { useTheme } from "@material-ui/core/styles";
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+import { ThemeProvider} from "@material-ui/core/styles";
+// import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import { createMuiTheme } from "@material-ui/core/styles/index";
 
 export const customTheme = createMuiTheme({
@@ -19,15 +19,15 @@ export const customTheme = createMuiTheme({
 });
 //it resets your password. It doesn’t matter if you are authenticated or not
 const PasswordForgetPage = () => {
-  const theme = useTheme();
+  
   return(
   <div className="div-flex">
-    <MuiThemeProvider theme={customTheme}>
+    <ThemeProvider theme={customTheme}>
     <Navigation/>
     <div>
       <PasswordForgetForm1 />
     </div>
-    </MuiThemeProvider>
+    </ThemeProvider>
   </div>
   );
   }
