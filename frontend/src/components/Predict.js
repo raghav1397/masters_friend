@@ -213,6 +213,7 @@ function ImgMediaCard(history) {
       </CardActions>
     </Card>
     <br></br> 
+    <br></br>
     </center>
     </>
   );
@@ -352,6 +353,11 @@ class Predict extends Component {
         <br></br>
         <ImgMediaCard history={this.state}/>
         </ThemeProvider>
+        <center>
+        <h6>NOTE : We only provide support for these 5 Universities for now and these results are valid only for Master's in Computer science Degree !!!</h6>
+        </center>
+        <br></br>
+        <br></br>
         </div>
       </>
     );
