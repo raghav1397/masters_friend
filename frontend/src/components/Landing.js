@@ -51,12 +51,12 @@ function LandingPage() {
               <Col className="ml-auto mr-auto text-center" md="8">
                 <h2 className="title">Who we are?</h2>
                 <h5>
-                  According to a surey, many masters students have little information
+                  According to a survey, many masters students have little information
                   about the universities they apply to and have little idea about the
                   universities to choose to apply. Furthermore, it gets really hard to do
                   all this by referring so many places. That's why we are here! Make your
                   life simpler by calling your Masters Friend. We work to provide you the
-                  best service possible for helping you through the pocess of choosing
+                  best service possible for helping you through the process of choosing
                   universities and applying to them.
                 </h5>
               </Col>

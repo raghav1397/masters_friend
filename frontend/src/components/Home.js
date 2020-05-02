@@ -52,7 +52,10 @@ class HomePage extends Component {
       url_resume: "",
       url_sop: "",
       uni: [],
-      loading1: false
+      loading1: false,
+      univ_name: [],
+      univ_score: [],
+      univ_score_new: []
     };
   }
 
@@ -267,14 +270,84 @@ class HomePage extends Component {
             console.log(key,this.state.uni[key].score)
           )
           )
-          var a = 1;
           for (let [key, value] of Object.entries(this.state.uni)) {
-            console.log(`${key}: ${value.score}`);
-            this.setState({
-              ["univ"+a]: key,
-              ["univ_score"+a]: value.score,
-            })
-            a = a+1;
+            this.state.univ_name.push(key.toUpperCase());
+            this.state.univ_score.push(value.score);
+          }
+          for (const [index,value] of this.state.univ_score.entries()) {
+            console.log(index);
+            if(value < 0)
+            {
+              this.state.univ_score_new.push(0);
+            }
+            else
+            {
+              this.state.univ_score_new.push(value);
+            }
+          }
+          for (const [index,value] of this.state.univ_score.entries()) {
+            console.log(index);
+            if(value < 0)
+            {
+              this.state.univ_score_new.push(0);
+            }
+            else
+            {
+              this.state.univ_score_new.push(value);
+            }
+          }
+          for (const [index, value] of this.state.univ_name.entries()) {
+            console.log(value);
+            if(value==="USC")
+            {
+              this.setState({
+                    ["link"+index]: "https://upload.wikimedia.org/wikipedia/en/b/bc/University_of_Southern_California_seal.svg",
+                    ["link_univ"+index]: "https://www.usc.edu/",
+                    ["link_rank"+index]: "https://www.usnews.com/best-graduate-schools/top-science-schools/university-of-southern-california-123961",
+                    ["link_apply"+index]: "https://viterbigradadmission.usc.edu/programs/masters/apply/ready-to-apply/",
+                    ["link_aid"+index]: "https://viterbigradadmission.usc.edu/programs/masters/tuition-funding/financial-aid-information/"
+                  })
+            }
+            else if(value==="MIT")
+            {
+              this.setState({
+                    ["link"+index]: "http://mstatic.mit.edu/nom150/items/seal_red_lg.jpg",
+                    ["link_univ"+index]: "http://www.mit.edu/",
+                    ["link_rank"+index]: "https://www.usnews.com/best-graduate-schools/top-science-schools/massachusetts-institute-of-technology-166683#computer_science",
+                    ["link_apply"+index]: "https://gradadmissions.mit.edu/programs/cse",
+                    ["link_aid"+index]: "http://catalog.mit.edu/mit/graduate-education/financial-aid/"
+                  })
+            }
+            else if(value==="NCSU")
+            {
+              this.setState({
+                    ["link"+index]: "https://upload.wikimedia.org/wikipedia/en/2/24/North_Carolina_State_University_seal.svg",
+                    ["link_univ"+index]: "https://www.ncsu.edu/",
+                    ["link_rank"+index]: "https://www.usnews.com/best-graduate-schools/top-science-schools/north-carolina-state-university-raleigh-199193",
+                    ["link_apply"+index]: "https://www.csc.ncsu.edu/academics/graduate/procedure.php",
+                    ["link_aid"+index]: "https://www.csc.ncsu.edu/academics/students_financial.php"
+                  })
+            }
+            else if(value==="NEU")
+            {
+              this.setState({
+                    ["link"+index]: "https://upload.wikimedia.org/wikipedia/en/b/bd/Northeastern_University_seal.svg",
+                    ["link_univ"+index]: "https://www.northeastern.edu/",
+                    ["link_rank"+index]: "https://www.usnews.com/best-graduate-schools/top-science-schools/northeastern-university-167358",
+                    ["link_apply"+index]: "https://www.khoury.northeastern.edu/academics/masters/masters-apply/",
+                    ["link_aid"+index]: "https://www.northeastern.edu/graduate/admissions-information/financial-aid/"
+                  })
+            }
+            else
+            {
+              this.setState({
+                    ["link"+index]: "https://upload.wikimedia.org/wikipedia/en/1/17/University_of_Texas_at_Dallas_seal.svg",
+                    ["link_univ"+index]: "https://www.utdallas.edu/",
+                    ["link_rank"+index]: "https://www.usnews.com/best-graduate-schools/top-science-schools/the-university-of-texas-at-dallas-228787",
+                    ["link_apply"+index]: "https://www.utdallas.edu/admissions/graduate/steps-to-admission/apply-now/",
+                    ["link_aid"+index]: "https://cs.utdallas.edu/admissions/graduate-admissions/financial-aid/"
+                  })
+            }
           }
           console.log(this.state)
           this.props.history.push({
@@ -337,6 +410,7 @@ class HomePage extends Component {
           {!loading && <p className="centered">Hello {username}!</p>}
           <form noValidate onSubmit={this.onSubmit}>
             <h1 className="h3 mb-3 font-weight-normal">Fill this Form</h1>
+            <p>IMPORTANT : Fill all the fields to compute your result !!!!</p>
                 <div className="form-group">
                   <label htmlFor="name">First name</label>
                   <input

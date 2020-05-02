@@ -250,92 +250,13 @@ class Predict extends Component {
       uni: [],
       univ_name:[],
       univ_score:[],
-      univ_score_new:[]
+      univ_score_new:[],
+      state1: []
     };
   }
 
   componentDidMount() {
-    this.setState({
-      first_name: this.props.location.state.first_name
-    })
-    this.state.univ_name.push(this.props.location.state.univ1.toUpperCase());
-    this.state.univ_name.push(this.props.location.state.univ2.toUpperCase());
-    this.state.univ_name.push(this.props.location.state.univ3.toUpperCase());
-    this.state.univ_name.push(this.props.location.state.univ4.toUpperCase());
-    this.state.univ_name.push(this.props.location.state.univ5.toUpperCase());
-    this.state.univ_score.push(this.props.location.state.univ_score1);
-    this.state.univ_score.push(this.props.location.state.univ_score2);
-    this.state.univ_score.push(this.props.location.state.univ_score3);
-    this.state.univ_score.push(this.props.location.state.univ_score4);
-    this.state.univ_score.push(this.props.location.state.univ_score5);
-    for (const [index,value] of this.state.univ_score.entries()) {
-      console.log(index);
-      if(value < 0)
-      {
-        this.state.univ_score_new.push(0);
-      }
-      else
-      {
-        this.state.univ_score_new.push(value);
-      }
-    }
-    for (const [index, value] of this.state.univ_name.entries()) {
-      console.log(value);
-      if(value==="USC")
-      {
-        this.setState({
-              ["link"+index]: "https://upload.wikimedia.org/wikipedia/en/b/bc/University_of_Southern_California_seal.svg",
-              ["link_univ"+index]: "https://www.usc.edu/",
-              ["link_rank"+index]: "https://www.usnews.com/best-graduate-schools/top-science-schools/university-of-southern-california-123961",
-              ["link_apply"+index]: "https://viterbigradadmission.usc.edu/programs/masters/apply/ready-to-apply/",
-              ["link_aid"+index]: "https://viterbigradadmission.usc.edu/programs/masters/tuition-funding/financial-aid-information/"
-            })
-      }
-      else if(value==="MIT")
-      {
-        this.setState({
-              ["link"+index]: "http://mstatic.mit.edu/nom150/items/seal_red_lg.jpg",
-              ["link_univ"+index]: "http://www.mit.edu/",
-              ["link_rank"+index]: "https://www.usnews.com/best-graduate-schools/top-science-schools/massachusetts-institute-of-technology-166683#computer_science",
-              ["link_apply"+index]: "https://gradadmissions.mit.edu/programs/cse",
-              ["link_aid"+index]: "http://catalog.mit.edu/mit/graduate-education/financial-aid/"
-            })
-      }
-      else if(value==="NCSU")
-      {
-        this.setState({
-              ["link"+index]: "https://upload.wikimedia.org/wikipedia/en/2/24/North_Carolina_State_University_seal.svg",
-              ["link_univ"+index]: "https://www.ncsu.edu/",
-              ["link_rank"+index]: "https://www.usnews.com/best-graduate-schools/top-science-schools/north-carolina-state-university-raleigh-199193",
-              ["link_apply"+index]: "https://www.csc.ncsu.edu/academics/graduate/procedure.php",
-              ["link_aid"+index]: "https://www.csc.ncsu.edu/academics/students_financial.php"
-            })
-      }
-      else if(value==="NEU")
-      {
-        this.setState({
-              ["link"+index]: "https://upload.wikimedia.org/wikipedia/en/b/bd/Northeastern_University_seal.svg",
-              ["link_univ"+index]: "https://www.northeastern.edu/",
-              ["link_rank"+index]: "https://www.usnews.com/best-graduate-schools/top-science-schools/northeastern-university-167358",
-              ["link_apply"+index]: "https://www.khoury.northeastern.edu/academics/masters/masters-apply/",
-              ["link_aid"+index]: "https://www.northeastern.edu/graduate/admissions-information/financial-aid/"
-            })
-      }
-      else
-      {
-        this.setState({
-              ["link"+index]: "https://upload.wikimedia.org/wikipedia/en/1/17/University_of_Texas_at_Dallas_seal.svg",
-              ["link_univ"+index]: "https://www.utdallas.edu/",
-              ["link_rank"+index]: "https://www.usnews.com/best-graduate-schools/top-science-schools/the-university-of-texas-at-dallas-228787",
-              ["link_apply"+index]: "https://www.utdallas.edu/admissions/graduate/steps-to-admission/apply-now/",
-              ["link_aid"+index]: "https://cs.utdallas.edu/admissions/graduate-admissions/financial-aid/"
-            })
-      }
-      
-    
-    }
-    console.log("raghav")
-    console.log(this.state)
+  
   }
 
   render() {
@@ -346,14 +267,14 @@ class Predict extends Component {
       <Navigation />
         <div>
           <center>
-          <h4>Here are your Results - {this.state.first_name.toUpperCase()}</h4>
+          <h4>Here are your Results - {this.props.location.state.first_name.toUpperCase()}</h4>
           <p>Possibility of Acceptance</p>
           </center>
         </div>
         <br></br>
-        <ImgMediaCard history={this.state}/>
+        <ImgMediaCard history={this.props.location.state}/>
         <center>
-        <h6>NOTE : We only provide support for these 5 Universities for now and these results are valid only for Master's in Computer science Degree !!!</h6>
+        <h6>NOTE : We only provide support for these 5 Universities for now and these results are valid only for Master's in Computer Science !!!!</h6>
         </center>
         <br></br>
         <br></br>
