@@ -1,6 +1,7 @@
 import copy
 import json
 import fitz
+import logging
 import requests
 import numpy as np
 import pickle as pkl
@@ -25,7 +26,7 @@ class Warmup(Resource):
 class MastersFriendB1(Resource):
     def send_requests(self, data, u):
         data["univ"] = u
-        print(data['univ'])
+        logging.info("Sending request to " + data['univ'])
         txt = ""
         # return json.loads(requests.post('http://127.0.0.1:5001/', json=data).text)
         retires = 5
@@ -33,7 +34,7 @@ class MastersFriendB1(Resource):
         success = False
         
         while t<retires and not success:
-            r = requests.post('https://masters-backend-2.ue.r.appspot.com/', json=data)
+            r = requests.post('https://mf-backend-2.uk.r.appspot.com/', json=data)
             if r.ok:
                 success = True
                 txt = r.text
@@ -54,8 +55,8 @@ class MastersFriendB1(Resource):
             parser.add_argument('lor4')
 
             # Setup google storage for access
-            storage_client = storage.Client.from_service_account_json('key.json')
-            bucket = storage_client.bucket('masters-273323.appspot.com')
+            storage_client = storage.Client.from_service_account_json('key1.json')
+            bucket = storage_client.bucket('mf-frontend.appspot.com')
 
             # Retrieve post request values
             args = parser.parse_args()
@@ -80,7 +81,7 @@ class MastersFriendB1(Resource):
             resume = doc[0].getPixmap(alpha = False, matrix=mat)
             resume.writePNG("/tmp/resume.png")
             resume = np.array(Image.open('/tmp/resume.png'))
-            print("Loaded resume")
+            logging.info("Loaded resume")
 
             # Retrieve sop and extract text
             blob = bucket.blob('sop/'+uid+'/'+uid+'_sop.pdf')
@@ -90,7 +91,7 @@ class MastersFriendB1(Resource):
             sop = ""
             for page in range(pages):
                 sop += doc[page].getText()
-            print("Loaded sop")
+            logging.info("Loaded sop")
 
             # Make calls to second backend for all universities
             data = {"gre":gre,"toefl":toefl,"grade":grade,"email":email,"uid":uid,"work_ex":work_ex,"lor1":lor1,"lor2":lor2,"lor3":lor3,"lor4":lor4}

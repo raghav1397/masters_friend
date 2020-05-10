@@ -140,7 +140,7 @@ function LandingPage() {
                     <h4 className="title">Raghavendhar Thiruvoipadi</h4>
                     <p className="category text-info">Fullstack developer and ML Specialist</p>
                     <p className="description">
-                      Develped several applications using ReactJS, React-Native and Android
+                      Developed several applications using ReactJS, React-Native and Android
                       App Studio. Trained in statistical machine learning and cloud
                       computing standards.
                     </p>

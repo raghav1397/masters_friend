@@ -247,7 +247,7 @@ class HomePage extends Component {
         // this.props.history.push('/Predict')
       })
       .catch((error) => {});
-    axios.post("https://masters-backend-1.wl.r.appspot.com/", {
+    axios.post("https://mf-backend-1-276618.uk.r.appspot.com/", {
     // axios.post("http://localhost:5000/", {
         email: this.state.email.toString(),
         grade: this.state.grade,
@@ -552,7 +552,7 @@ class HomePage extends Component {
                     />
                   </Button>
                 </div>
-                <ProgressBar animated now={this.state.progressresume} />
+                <ProgressBar now={this.state.progressresume} />
                 <p>
                   NOTE : Preview the Document only after upload is complete....
                 </p>
@@ -578,7 +578,7 @@ class HomePage extends Component {
                     />
                   </Button>
                 </div>
-                <ProgressBar animated now={this.state.progresssop} />
+                <ProgressBar now={this.state.progresssop} />
                 <p>
                   NOTE : Preview the Document only after upload is complete....
                 </p>
